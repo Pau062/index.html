@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserva y Calendario</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    form input[type="text"], form input[type="date"], form input[type="email"], form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    form input[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    form input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    .calendar {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    /* Estilos de calendario ficticios */
+    .calendar h2 {
+      text-align: center;
+    }
+    .calendar table {
+      width: 100%;
+    }
+    .calendar th, .calendar td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Haz tu Reserva</h1>
+  <form>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="email">Correo electrónico:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="fecha">Fecha de reserva:</label>
+    <input type="date" id="fecha" name="fecha" required>
+
+    <label for="mensaje">Mensaje:</label>
+    <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+
+    <input type="submit" value="Reservar">
+  </form>
+
+  <div class="calendar">
+    <h2>Calendario de Eventos</h2>
+    <table>
+      <tr>
+        <th>Día</th>
+        <th>Evento</th>
+      </tr>
+      <!-- Aquí se añadirán los días del calendario -->
+    </table>
+  </div>
+</div>
+
+<script>
+  // Obtén la referencia del elemento del calendario
+  var calendarEl = document.querySelector('.calendar table');
+
+  // Crea un objeto de fecha para obtener el mes y año actual
+  var date = new Date();
+
+  // Genera los días del calendario
+  for (var i = 1; i <= 31; i++) {
+    // Crea un nuevo elemento de tabla (tr)
+    var tr = document.createElement('tr');
+
+    // Crea un nuevo elemento de día (td)
+    var tdDay = document.createElement('td');
+    tdDay.textContent = i + ' de ' + (date.getMonth() + 1);
+
+    // Crea un nuevo elemento de evento (td)
+    var tdEvent = document.createElement('td');
+    tdEvent.textContent = 'Evento ' + i;
+
+    // Añade los elementos de día y evento a la tabla
+    tr.appendChild(tdDay);
+    tr.appendChild(tdEvent);
+
+    // Añade la tabla al calendario
+    calendarEl.appendChild(tr);
+  }
+</script>
+
+</body>
+</html>
+
